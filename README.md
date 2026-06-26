@@ -43,12 +43,14 @@ comparable.
 
 | Tool | Input / build | Genes covered | Concordance (resolved calls) |
 |------|---------------|:-------------:|:----------------------------:|
-| Aldy | BAM/CRAM, GRCh38 | 9/9 | 83% (299/359) |
+| Aldy | BAM/CRAM, GRCh38 | 9/9 | 86% (315/365) |
 | Stargazer | VCF, GRCh37 | 9/9 | 70% (233/335) |
 
-Aldy is a BAM-based caller, run here on gene-region CRAM slices (its copy-number-neutral reference
-region is included in each slice so it can normalise); its principal strength, structural CYP2D6 from
-whole-genome read depth, is not exercised by this panel. Stargazer is GRCh37-only and was run on that
+Aldy is a BAM-based caller, run here on gene-region CRAM slices. Each slice includes Aldy's
+copy-number-neutral reference region so it can normalise, and is MAPQ≥50-filtered to drop low-quality
+paralog mismaps (e.g. CYP2B7 reads bleeding into CYP2B6, which the 1000G call set filters but a BAM
+caller would otherwise count). Aldy's principal strength, structural CYP2D6 from whole-genome read
+depth, is not exercised by this panel. Stargazer is GRCh37-only and was run on that
 build. The harness also runs Cyrius and StellarPGx (whole-genome–depth CYP2D6 callers) and several
 long-read callers; these require inputs outside this panel's scope.
 

@@ -110,7 +110,9 @@ def fetch_cram(sample, gene, chrom, start, end, out: Path, cache: str) -> bool:
     if chrom.replace("chr", "") != "22":
         regions.append("chr22:42151472-42152258")
     try:
-        run(["samtools", "view", "-T", ref, "-C", "-o", str(dest), url, *regions], cwd=cache)
+        # -q 50 drops low-MAPQ paralog mismaps (e.g. CYP2B7 reads bleeding into CYP2B6),
+        # which the 1000G call set filters but BAM callers would otherwise count.
+        run(["samtools", "view", "-q", "50", "-T", ref, "-C", "-o", str(dest), url, *regions], cwd=cache)
         run(["samtools", "index", str(dest)])
         return True
     except subprocess.CalledProcessError:
