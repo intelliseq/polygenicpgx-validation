@@ -50,7 +50,13 @@ Aldy is a BAM-based caller, run here on gene-region CRAM slices. Each slice incl
 copy-number-neutral reference region so it can normalise, and is MAPQ≥50-filtered to drop low-quality
 paralog mismaps (e.g. CYP2B7 reads bleeding into CYP2B6, which the 1000G call set filters but a BAM
 caller would otherwise count). Aldy's principal strength, structural CYP2D6 from whole-genome read
-depth, is not exercised by this panel. Stargazer is GRCh37-only and was run on that
+depth, is not exercised by this panel.
+
+Known issues affecting Aldy here: it is designed for whole-genome input, so gene-region slices are
+off-label; its CYP2B6 residual errors are paralog (CYP2B7) artifacts that slices cannot fully resolve,
+the MAPQ≥50 filter that suppresses them costs a few CYP2C19 calls, and several CYP2B6 truth genotypes
+are themselves ambiguous. These are limitations of running a WGS caller on slices, not of Aldy on its
+intended input. Stargazer is GRCh37-only and was run on that
 build. The harness also runs Cyrius and StellarPGx (whole-genome–depth CYP2D6 callers) and several
 long-read callers; these require inputs outside this panel's scope.
 
