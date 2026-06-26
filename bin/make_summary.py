@@ -4,7 +4,7 @@ Per-tool summary table for the README: how many panel genes each caller covers a
 star-allele concordance with the GeT-RM consensus on the calls it resolves (`matches/resolved`
 + %). GRCh38, resolved-call basis (a call is "resolved" when the tool emits a definite diplotype,
 i.e. not Indeterminate / NA / ERROR). CYP2D6 is excluded (structural; not a fair SNV comparison),
-and ursaPGx is omitted.
+
 
 Usage: python3 make_summary.py --concordance results/concordance.tsv [--out results/summary.md]
 """
@@ -13,7 +13,7 @@ from collections import defaultdict
 from pathlib import Path
 
 PANEL = ["cyp2c19", "cyp2c9", "cyp3a5", "cyp2b6", "slco1b1", "nudt15", "dpyd", "tpmt", "vkorc1"]
-# VCF/GRCh38 callers compared head-to-head; ursaPGx omitted by request.
+# VCF/GRCh38 callers compared head-to-head.
 TOOLS = ["polygenic", "pharmcat", "pypgx", "panno", "pgxpop", "aldy"]
 LABEL = {"polygenic": "polygenic", "pharmcat": "PharmCAT", "pypgx": "PyPGx",
          "panno": "PAnno", "pgxpop": "PGxPOP", "aldy": "Aldy"}

@@ -44,12 +44,6 @@ tools:
     builds: [grch37, grch38]
     image: pgxbench/cyrius:1.1.1
     genes: [cyp2d6]
-  ursapgx:
-    group: A
-    input: vcf
-    builds: [grch38]
-    image: pgxbench/ursapgx:1.0.0
-    note: requires phased VCF
   pgxpop:
     group: A
     input: vcf
