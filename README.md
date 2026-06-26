@@ -108,4 +108,4 @@ re-run by anyone.
 
 ## License
 
-MIT (see `LICENSE`).
+All rights reserved (Intelliseq).
