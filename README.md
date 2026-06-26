@@ -129,4 +129,4 @@ re-run by anyone.
 
 ## License
 
-All rights reserved (Intelliseq).
+All rights reserved (Intelliseq SA).
