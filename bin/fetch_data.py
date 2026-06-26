@@ -104,9 +104,13 @@ def fetch_cram(sample, gene, chrom, start, end, out: Path, cache: str) -> bool:
     if not url:
         return False
     dest = out / f"{sample}-{gene}.grch38.cram"
+    # Aldy normalises coverage against a copy-number-neutral region (CYP2D8, chr22);
+    # include it in the slice so BAM callers can run on genes off chr22.
+    regions = [f"{chrom}:{start}-{end}"]
+    if chrom.replace("chr", "") != "22":
+        regions.append("chr22:42151472-42152258")
     try:
-        run(["samtools", "view", "-T", ref, "-C", "-o", str(dest),
-             url, f"{chrom}:{start}-{end}"], cwd=cache)
+        run(["samtools", "view", "-T", ref, "-C", "-o", str(dest), url, *regions], cwd=cache)
         run(["samtools", "index", str(dest)])
         return True
     except subprocess.CalledProcessError:

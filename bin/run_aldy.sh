@@ -21,8 +21,9 @@ emit() { # status diplotype [phenotype]
 # Aldy-supported genes (others -> NA). Map our lowercase id -> Aldy gene id.
 declare -A GMAP=(
   [cyp2d6]=CYP2D6 [cyp2c19]=CYP2C19 [cyp2c9]=CYP2C9 [cyp3a5]=CYP3A5
-  [dpyd]=DPYD [tpmt]=TPMT
-  # (Aldy also does CYP2C8/CYP3A4/CYP4F2, not in our panel; cyp2b6/slco1b1/vkorc1/nudt15 unsupported)
+  [dpyd]=DPYD [tpmt]=TPMT [cyp2b6]=CYP2B6 [slco1b1]=SLCO1B1
+  [nudt15]=NUDT15 [vkorc1]=VKORC1
+  # Aldy 4 covers all nine panel genes (plus CYP2C8/CYP3A4/CYP4F2, not in our panel).
 )
 G=${GMAP[$gene]:-}
 [ -n "$G" ] || { emit NA ""; exit 0; }

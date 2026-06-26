@@ -44,6 +44,11 @@ def vkorc1_dose(s: str):
     dose = 0
     for t in toks:
         t = t.strip()
+        if t == "*h1":                        # Aldy VKORC1 haplotype *H1 carries rs9923231 (-1639A)
+            dose += 1
+            continue
+        if re.fullmatch(r"\*h\d+", t):        # other Aldy VKORC1 haplotypes are reference
+            continue
         if "reference" in t or t in ("g", "c", "-1639g") or t.endswith("(c)") or t.endswith("(g)"):
             continue                          # reference allele
         if ("variant" in t or "-1639a" in t or ">a" in t or t in ("a", "t")

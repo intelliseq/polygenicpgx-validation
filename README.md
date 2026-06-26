@@ -43,14 +43,14 @@ comparable.
 
 | Tool | Input / build | Genes covered | Concordance (resolved calls) |
 |------|---------------|:-------------:|:----------------------------:|
-| Aldy | BAM/CRAM, GRCh38 | 5/9 | 83% (175/211) |
+| Aldy | BAM/CRAM, GRCh38 | 9/9 | 77% (278/359) |
 | Stargazer | VCF, GRCh37 | 9/9 | 70% (233/335) |
 
-Aldy is a BAM-based caller whose principal strength is structural CYP2D6 from whole-genome read depth,
-which a gene-region/VCF panel does not exercise; on the gene-region alignments used here it covers five
-of the nine panel genes. Stargazer is GRCh37-only and was run on that build. The harness also runs
-Cyrius and StellarPGx (whole-genome–depth CYP2D6 callers) and several long-read callers; these require
-inputs outside this panel's scope.
+Aldy is a BAM-based caller, run here on gene-region CRAM slices (its copy-number-neutral reference
+region is included in each slice so it can normalise); its principal strength, structural CYP2D6 from
+whole-genome read depth, is not exercised by this panel. Stargazer is GRCh37-only and was run on that
+build. The harness also runs Cyrius and StellarPGx (whole-genome–depth CYP2D6 callers) and several
+long-read callers; these require inputs outside this panel's scope.
 
 A few properties of polygenic relevant to clinical use, all reproducible with this harness:
 
