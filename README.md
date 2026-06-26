@@ -30,14 +30,27 @@ for which the tool produced at least one call.
 | polygenic | 9/9 | 95% (316/332) |
 | PyPGx | 9/9 | 88% (342/390) |
 | PAnno | 9/9 | 87% (340/390) |
-| Aldy | 5/9 | 83% (175/211) |
 | PharmCAT | 9/9 | 83% (322/390) |
 | PGxPOP | 9/9 | 78% (303/390) |
 
-_GRCh38, resolved-call basis. Regenerate with `bin/make_summary.py` after a run. The harness also runs
-additional callers (Aldy/Cyrius/StellarPGx on BAM, Stargazer on GRCh37, long-read callers); they are
-omitted here because they evaluate on different inputs and are not directly comparable on this
-VCF/GRCh38 panel._
+_VCF input, GRCh38, resolved-call basis. Regenerate with `bin/make_summary.py` after a run._
+
+### Callers evaluated on a different footing
+
+Two of the established callers do not run on the same VCF/GRCh38 input, so they are reported separately
+rather than mixed into the table above. Their figures reflect that footing and are not directly
+comparable.
+
+| Tool | Input / build | Genes covered | Concordance (resolved calls) |
+|------|---------------|:-------------:|:----------------------------:|
+| Aldy | BAM/CRAM, GRCh38 | 5/9 | 83% (175/211) |
+| Stargazer | VCF, GRCh37 | 9/9 | 70% (233/335) |
+
+Aldy is a BAM-based caller whose principal strength is structural CYP2D6 from whole-genome read depth,
+which a gene-region/VCF panel does not exercise; on the gene-region alignments used here it covers five
+of the nine panel genes. Stargazer is GRCh37-only and was run on that build. The harness also runs
+Cyrius and StellarPGx (whole-genome–depth CYP2D6 callers) and several long-read callers; these require
+inputs outside this panel's scope.
 
 A few properties of polygenic relevant to clinical use, all reproducible with this harness:
 

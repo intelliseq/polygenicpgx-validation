@@ -13,10 +13,11 @@ from collections import defaultdict
 from pathlib import Path
 
 PANEL = ["cyp2c19", "cyp2c9", "cyp3a5", "cyp2b6", "slco1b1", "nudt15", "dpyd", "tpmt", "vkorc1"]
-# VCF/GRCh38 callers compared head-to-head.
-TOOLS = ["polygenic", "pharmcat", "pypgx", "panno", "pgxpop", "aldy"]
+# VCF/GRCh38 callers compared head-to-head. BAM-based (Aldy) and GRCh37-only
+# (Stargazer) callers run on a different footing and are reported separately.
+TOOLS = ["polygenic", "pharmcat", "pypgx", "panno", "pgxpop"]
 LABEL = {"polygenic": "polygenic", "pharmcat": "PharmCAT", "pypgx": "PyPGx",
-         "panno": "PAnno", "pgxpop": "PGxPOP", "aldy": "Aldy"}
+         "panno": "PAnno", "pgxpop": "PGxPOP"}
 
 
 def load(p):
