@@ -1,0 +1,10 @@
+# Runtime + results (regenerate by running the harness)
+work/
+results/
+.sources/
+# Nextflow runtime artifacts (may embed local paths)
+.nextflow/
+.nextflow.log*
+# Python
+__pycache__/
+*.pyc

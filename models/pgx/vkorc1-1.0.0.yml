@@ -1,0 +1,17 @@
+# VKORC1 -1639G>A warfarin sensitivity from rs9923231. GRCh38 chr16:31096368 C>T (+strand;
+# VKORC1 is minus-strand, so genomic C>T = c.-1639G>A). Reference (C/=G) = normal sensitivity;
+# variant (T/=A) = increased sensitivity (lower dose). Diplotype IDs use CPIC Reference/HGVS.
+diplotype_model:
+  diplotypes:
+    "Reference/Reference":   {variants: {16-31096368-C-T: {diplotype: C/C}}}
+    "Reference/c.-1639G>A":  {variants: {16-31096368-C-T: {diplotype: C/T}}}
+    "c.-1639G>A/c.-1639G>A": {variants: {16-31096368-C-T: {diplotype: T/T}}}
+  categories:
+    "Reference/Reference":   "Normal warfarin sensitivity (GG)"
+    "Reference/c.-1639G>A":  "Intermediate warfarin sensitivity (GA)"
+    "c.-1639G>A/c.-1639G>A": "High warfarin sensitivity (AA)"
+description:
+  trait_title: VKORC1 -1639G>A warfarin sensitivity
+  gene: VKORC1
+  assembly: GRCh38
+  rsids: [rs9923231]

@@ -1,0 +1,23 @@
+# TPMT (thiopurine S-methyltransferase) star-allele model.
+# Core CPIC/dbSNP allele definitions, GRCh38 genomic +strand ([[genomic-strand-rule]]).
+# Defining variants (verified against the 1000G GRCh38 panel):
+#   *2  rs1800462  chr6:18143724 C>G   (c.238G>C)
+#   *3B rs1800460  chr6:18138997 C>T   (c.460G>A)
+#   *3C rs1142345  chr6:18130687 T>C   (c.719A>G)
+#   *3A = *3B + *3C
+#   *16 rs144040149 chr6:18138969 C>T  (c.488G>A)
+# Standard public definitions; NOT fitted to any benchmark sample.
+haplotype_model:
+  haplotypes:
+    TPMT*1:
+    TPMT*2:
+      6-18143724-C-G: {ref: "C", alt: "G", effect_allele: "G"}
+    TPMT*3A:
+      6-18138997-C-T: {ref: "C", alt: "T", effect_allele: "T"}
+      6-18130687-T-C: {ref: "T", alt: "C", effect_allele: "C"}
+    TPMT*3B:
+      6-18138997-C-T: {ref: "C", alt: "T", effect_allele: "T"}
+    TPMT*3C:
+      6-18130687-T-C: {ref: "T", alt: "C", effect_allele: "C"}
+    TPMT*16:
+      6-18138969-C-T: {ref: "C", alt: "T", effect_allele: "T"}

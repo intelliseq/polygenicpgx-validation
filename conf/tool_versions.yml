@@ -1,0 +1,110 @@
+# Tool registry for the PGx benchmark. Pinned versions keep concordance
+# reproducible (allele-definition / PharmVar version materially changes results).
+#
+# group:   A = short-read/VCF caller (run on all samples)
+#          B = long-read caller (run on the 3-sample LR sub-cohort)
+#          C = capability-matrix only (commercial / not a diplotype caller)
+# input:   vcf | bam | cram | longread_bam
+# builds:  genome builds the tool natively accepts
+# image:   docker image tag built from docker/<name>.Dockerfile (null for group C)
+# allele_defs: pinned allele-definition source/version where applicable
+
+tools:
+  polygenic:
+    group: A
+    input: vcf
+    builds: [grch38]
+    image: pgxbench/polygenic:local
+    allele_defs: PharmVar 5.1.8 (CYP2A6 6.2.25)
+    note: this repo; pip install . into the image
+  pharmcat:
+    group: A
+    input: vcf
+    builds: [grch38]
+    image: pgxbench/pharmcat:2.15.5
+    allele_defs: bundled PharmCAT positions
+  pypgx:
+    group: A
+    input: [vcf, bam]
+    builds: [grch37, grch38]
+    image: pgxbench/pypgx:0.25.0
+  aldy:
+    group: A
+    input: [bam, cram, vcf]
+    builds: [grch37, grch38]
+    image: pgxbench/aldy:4.6
+  stellarpgx:
+    group: A
+    input: bam
+    builds: [grch37, grch38]
+    image: pgxbench/stellarpgx:1.2.7
+  cyrius:
+    group: A
+    input: bam
+    builds: [grch37, grch38]
+    image: pgxbench/cyrius:1.1.1
+    genes: [cyp2d6]
+  ursapgx:
+    group: A
+    input: vcf
+    builds: [grch38]
+    image: pgxbench/ursapgx:1.0.0
+    note: requires phased VCF
+  pgxpop:
+    group: A
+    input: vcf
+    builds: [grch38]
+    image: pgxbench/pgxpop:1.0
+  panno:
+    group: A
+    input: vcf
+    builds: [grch38]
+    image: pgxbench/panno:0.2.0
+  t1k:
+    group: A
+    input: [bam, cram]
+    builds: [grch37, grch38]
+    image: pgxbench/t1k:1.0.5
+    genes: [cyp2d6]
+  stargazer:
+    group: A
+    input: [vcf, bam]
+    builds: [grch37]
+    image: pgxbench/stargazer:2.0.2
+    note: GRCh37-only contrast run
+  pbstarphase:
+    group: B
+    input: longread_bam
+    builds: [grch38]
+    image: pgxbench/pbstarphase:2.1.0
+  pangu:
+    group: B
+    input: longread_bam
+    builds: [grch38]
+    image: pgxbench/pangu:0.2.8
+    genes: [cyp2d6]
+  decypher:
+    group: B
+    input: longread_bam
+    builds: [grch38]
+    image: pgxbench/decypher:0.1.0
+  chinook:
+    group: B
+    input: longread_bam
+    builds: [grch38]
+    image: pgxbench/wf-pgx:latest
+    genes: [cyp2d6]
+  specimmune:
+    group: B
+    input: longread_bam
+    builds: [grch38]
+    image: pgxbench/specimmune:1.0.0
+  dragen:
+    group: C
+    note: Illumina DRAGEN Star Allele Caller — commercial; matrix only
+  astrolabe:
+    group: C
+    note: Astrolabe/Constellation — commercial; matrix only
+  hubble2d6:
+    group: C
+    note: CYP2D6 haplotype-function CNN — not a diplotype caller; matrix only

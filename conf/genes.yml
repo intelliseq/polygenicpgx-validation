@@ -1,0 +1,66 @@
+# Core CPIC + CYP2D6 gene panel for the PGx tool benchmark.
+#
+# Per gene:
+#   grch38 / grch37 : [chrom, start, end] slice windows (a little wider than the
+#                     coding region to catch upstream/downstream defining variants).
+#                     GRCh38 chrom names carry the "chr" prefix (NYGC 30x panel);
+#                     GRCh37 chrom names are bare (1000G Phase-3 release).
+#   polygenic_model : path to this repo's model, or null when unmodelled (N/A cell).
+#   cnv             : true if structural / copy-number alleles are in scope.
+#
+# polygenic has no VKORC1 or TPMT model (decision: leave N/A, do not author).
+# CYP3A5 IS modelled (cyp3a5-pharmvar-5.1.8.yml) and is benchmarked.
+
+genes:
+  cyp2d6:
+    # widened to include the CYP2D7 paralog (~42,139-42,149 kb GRCh38) that
+    # Cyrius/Aldy/pangu need for *68/*36 hybrid resolution.
+    grch38: ["chr22", 42120000, 42155000]
+    grch37: ["22", 42518000, 42550000]
+    polygenic_model: models/pgx/cyp2d6-pharmvar-5.1.8.yml
+    cnv: true
+  cyp2c19:
+    grch38: ["chr10", 94760000, 94870000]
+    grch37: ["10", 96520000, 96615000]
+    polygenic_model: models/pgx/cyp2c19-pharmvar-5.1.8.yml
+    cnv: true
+  cyp2c9:
+    grch38: ["chr10", 94930000, 94990000]
+    grch37: ["10", 96690000, 96750000]
+    polygenic_model: models/pgx/cyp2c9-pharmvar-5.1.8.yml
+    cnv: false
+  cyp3a5:
+    grch38: ["chr7", 99640000, 99685000]
+    grch37: ["7", 99240000, 99285000]
+    polygenic_model: models/pgx/cyp3a5-pharmvar-5.1.8.yml
+    cnv: false
+  cyp2b6:
+    grch38: ["chr19", 40985000, 41030000]
+    grch37: ["19", 41490000, 41535000]
+    polygenic_model: models/pgx/cyp2b6-pharmvar-5.1.8.yml
+    cnv: false
+  slco1b1:
+    grch38: ["chr12", 21125000, 21240000]
+    grch37: ["12", 21280000, 21395000]
+    polygenic_model: models/pgx/slco1b1-pharmvar-5.1.8.yml
+    cnv: false
+  vkorc1:
+    grch38: ["chr16", 31088000, 31110000]
+    grch37: ["16", 31100000, 31112000]
+    polygenic_model: models/pgx/vkorc1-1.0.0.yml      # rs9923231 diplotype model
+    cnv: false
+  tpmt:
+    grch38: ["chr6", 18125000, 18160000]
+    grch37: ["6", 18125000, 18160000]
+    polygenic_model: models/pgx/tpmt-cpic-1.0.0.yml   # core CPIC star alleles
+    cnv: false
+  nudt15:
+    grch38: ["chr13", 48035000, 48055000]
+    grch37: ["13", 48609000, 48628000]
+    polygenic_model: models/pgx/nudt15-pharmvar-5.1.8.yml
+    cnv: false
+  dpyd:
+    grch38: ["chr1", 97070000, 98390000]
+    grch37: ["1", 97540000, 98390000]
+    polygenic_model: models/pgx/dpyd-pharmvar-5.1.8.yml
+    cnv: false
