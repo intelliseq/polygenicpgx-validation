@@ -43,7 +43,7 @@ comparable.
 
 | Tool | Input / build | Genes covered | Concordance (resolved calls) |
 |------|---------------|:-------------:|:----------------------------:|
-| Aldy | BAM/CRAM, GRCh38 | 9/9 | 77% (278/359) |
+| Aldy | BAM/CRAM, GRCh38 | 9/9 | 83% (299/359) |
 | Stargazer | VCF, GRCh37 | 9/9 | 70% (233/335) |
 
 Aldy is a BAM-based caller, run here on gene-region CRAM slices (its copy-number-neutral reference

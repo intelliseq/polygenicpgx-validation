@@ -25,7 +25,11 @@ REFWORD = re.compile(r"\b(reference|ref|wild[- ]?type|wt)\b", re.I)
 
 def major_multiset(diplo: str) -> Counter:
     # normalise nomenclature so "Reference" compares equal to "*1" (e.g. DPYD wild-type).
-    d = REFWORD.sub("*1", (diplo or "").replace("_", " ")).strip()
+    d = REFWORD.sub("*1", (diplo or "").replace("_", " "))
+    # Aldy writes sub-alleles with attached modifier variants, e.g. "*(9.001 +rs4802101 +rs..)";
+    # drop the +/- modifier rs-tokens and unwrap "*(" so only the core star allele remains.
+    d = re.sub(r"[+-]\s*rs\d+", " ", d)
+    d = d.replace("*(", "*").strip()
     return Counter(STAR.findall(d) + RS.findall(d))
 
 
